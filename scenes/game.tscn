@@ -1,11 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgiurci8latx4"]
+[gd_scene load_steps=6 format=3 uid="uid://cgiurci8latx4"]
 
 [ext_resource type="PackedScene" uid="uid://d333dqdpbo1ps" path="res://scenes/player.tscn" id="1_8ernn"]
-[ext_resource type="PackedScene" uid="uid://cvayfsdvqsp3k" path="res://scenes/fish.tscn" id="2_8a8fe"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_wivhb"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rp5gu"]
 
+[sub_resource type="Curve2D" id="Curve2D_qps6h"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 325)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_gyhuu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1151, 325, 0, 0, 0, 0, 1151, 0)
+}
+point_count = 2
+
 [node name="Game" type="Node2D"]
+script = ExtResource("1_wivhb")
 
 [node name="Player" parent="." instance=ExtResource("1_8ernn")]
 position = Vector2(582, 648)
@@ -16,5 +29,22 @@ position = Vector2(582, 648)
 position = Vector2(582, 649)
 shape = SubResource("WorldBoundaryShape2D_rp5gu")
 
-[node name="Fish" parent="." instance=ExtResource("2_8a8fe")]
-position = Vector2(1230, 165)
+[node name="FishSpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Fish" type="Node" parent="."]
+
+[node name="FishSpawnLeft" type="Path2D" parent="."]
+curve = SubResource("Curve2D_qps6h")
+
+[node name="SpawnLocation" type="PathFollow2D" parent="FishSpawnLeft"]
+rotation = 1.5708
+
+[node name="FishSpawnRight" type="Path2D" parent="."]
+curve = SubResource("Curve2D_gyhuu")
+
+[node name="SpawnLocation" type="PathFollow2D" parent="FishSpawnRight"]
+position = Vector2(1151, 325)
+rotation = -1.5708
+
+[connection signal="timeout" from="FishSpawnTimer" to="." method="_on_fish_spawn_timer_timeout"]
