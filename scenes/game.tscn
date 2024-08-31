@@ -4,8 +4,6 @@
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_wivhb"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="2_23ond"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rp5gu"]
-
 [sub_resource type="Curve2D" id="Curve2D_qps6h"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 325)
@@ -17,6 +15,8 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1151, 325, 0, 0, 0, 0, 1151, 0)
 }
 point_count = 2
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rp5gu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_354a6"]
 normal = Vector2(1, 0)
@@ -35,13 +35,6 @@ script = ExtResource("2_23ond")
 [node name="Player" parent="." instance=ExtResource("1_8ernn")]
 z_index = 5
 position = Vector2(582, 648)
-
-[node name="Floor" type="StaticBody2D" parent="."]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(582, 649)
-shape = SubResource("WorldBoundaryShape2D_rp5gu")
 
 [node name="FishSpawnTimer" type="Timer" parent="."]
 autostart = true
@@ -62,6 +55,13 @@ position = Vector2(1151, 325)
 rotation = -1.5708
 
 [node name="Walls" type="Node2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="Walls"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Floor"]
+position = Vector2(582, 649)
+shape = SubResource("WorldBoundaryShape2D_rp5gu")
 
 [node name="Left" type="StaticBody2D" parent="Walls"]
 collision_mask = 2
