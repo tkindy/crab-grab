@@ -3,6 +3,7 @@ extends Node2D
 
 const FISH = preload("res://scenes/fish.tscn")
 
+var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,4 +32,4 @@ func _on_fish_spawn_timer_timeout() -> void:
   $Fish.add_child(new_fish)
 
 func _on_fish_entered(body: Node2D) -> void:
-  $GameManager.score += 1
+  score += 1

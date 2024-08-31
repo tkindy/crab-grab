@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgiurci8latx4"]
+[gd_scene load_steps=8 format=3 uid="uid://cgiurci8latx4"]
 
 [ext_resource type="PackedScene" uid="uid://d333dqdpbo1ps" path="res://scenes/player.tscn" id="1_8ernn"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_wivhb"]
-[ext_resource type="Script" path="res://scenes/game_manager.gd" id="2_23ond"]
 
 [sub_resource type="Curve2D" id="Curve2D_qps6h"]
 _data = {
@@ -28,9 +27,6 @@ distance = -1.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wivhb")
-
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("2_23ond")
 
 [node name="Player" parent="." instance=ExtResource("1_8ernn")]
 z_index = 5
