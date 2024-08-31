@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgiurci8latx4"]
+[gd_scene load_steps=9 format=3 uid="uid://cgiurci8latx4"]
 
 [ext_resource type="PackedScene" uid="uid://d333dqdpbo1ps" path="res://scenes/player.tscn" id="1_8ernn"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_wivhb"]
@@ -18,6 +18,14 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_354a6"]
+normal = Vector2(1, 0)
+distance = -1.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7tlsf"]
+normal = Vector2(-1, 0)
+distance = -1.0
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wivhb")
 
@@ -29,6 +37,7 @@ z_index = 5
 position = Vector2(582, 648)
 
 [node name="Floor" type="StaticBody2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2(582, 649)
@@ -51,5 +60,21 @@ curve = SubResource("Curve2D_gyhuu")
 [node name="SpawnLocation" type="PathFollow2D" parent="FishSpawnRight"]
 position = Vector2(1151, 325)
 rotation = -1.5708
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Left" type="StaticBody2D" parent="Walls"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left"]
+position = Vector2(0, 291)
+shape = SubResource("WorldBoundaryShape2D_354a6")
+
+[node name="Right" type="StaticBody2D" parent="Walls"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
+position = Vector2(1153, 319)
+shape = SubResource("WorldBoundaryShape2D_7tlsf")
 
 [connection signal="timeout" from="FishSpawnTimer" to="." method="_on_fish_spawn_timer_timeout"]
