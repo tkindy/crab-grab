@@ -21,3 +21,7 @@ func _process(delta: float) -> void:
     position.x -= x_change
   else:
     position.x += x_change
+
+
+func _on_body_entered(body: Node2D) -> void:
+  queue_free()

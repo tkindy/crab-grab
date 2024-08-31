@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgiurci8latx4"]
+[gd_scene load_steps=7 format=3 uid="uid://cgiurci8latx4"]
 
 [ext_resource type="PackedScene" uid="uid://d333dqdpbo1ps" path="res://scenes/player.tscn" id="1_8ernn"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_wivhb"]
+[ext_resource type="Script" path="res://scenes/game_manager.gd" id="2_23ond"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rp5gu"]
 
@@ -20,7 +21,11 @@ point_count = 2
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wivhb")
 
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("2_23ond")
+
 [node name="Player" parent="." instance=ExtResource("1_8ernn")]
+z_index = 5
 position = Vector2(582, 648)
 
 [node name="Floor" type="StaticBody2D" parent="."]

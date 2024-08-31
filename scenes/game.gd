@@ -24,8 +24,11 @@ func _on_fish_spawn_timer_timeout() -> void:
   var spawn_location: PathFollow2D = spawn_side.get_node("SpawnLocation")
   spawn_location.progress_ratio = randf()
 
-  var direction = spawn_location.rotation - PI / 2
-
   new_fish.position = spawn_location.position
 
+  new_fish.body_entered.connect(_on_fish_entered)
+
   $Fish.add_child(new_fish)
+
+func _on_fish_entered(body: Node2D) -> void:
+  $GameManager.score += 1
