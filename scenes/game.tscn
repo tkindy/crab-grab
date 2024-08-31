@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://cgiurci8latx4"]
+[gd_scene load_steps=4 format=3 uid="uid://cgiurci8latx4"]
+
+[ext_resource type="PackedScene" uid="uid://d333dqdpbo1ps" path="res://scenes/player.tscn" id="1_8ernn"]
+[ext_resource type="PackedScene" uid="uid://cvayfsdvqsp3k" path="res://scenes/fish.tscn" id="2_8a8fe"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rp5gu"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_8ernn")]
+position = Vector2(582, 648)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(582, 649)
+shape = SubResource("WorldBoundaryShape2D_rp5gu")
+
+[node name="Fish" parent="." instance=ExtResource("2_8a8fe")]
+position = Vector2(1230, 165)

@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://d333dqdpbo1ps"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_17ggi"]
+[ext_resource type="Texture2D" uid="uid://d073src56lqem" path="res://assets/frenchie/Frenchie-1.png" id="1_pn84j"]
+[ext_resource type="Texture2D" uid="uid://bpv8ckwpsd1nm" path="res://assets/frenchie/Frenchie-2.png" id="2_ulewr"]
+[ext_resource type="Texture2D" uid="uid://bhvs2li7i042y" path="res://assets/frenchie/Frenchie-3.png" id="3_8o8dd"]
+[ext_resource type="Texture2D" uid="uid://eyeiglski2cb" path="res://assets/frenchie/Frenchie-4.png" id="4_app1l"]
+[ext_resource type="Texture2D" uid="uid://48n8nn4rfy37" path="res://assets/frenchie/Frenchie-5.png" id="5_lflsc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnin2"]
+size = Vector2(150, 128.5)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_17ggi")
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(0.2, 0.2)
+metadata/_edit_group_ = true
+
+[node name="Eyes" type="Sprite2D" parent="Body"]
+texture = ExtResource("1_pn84j")
+
+[node name="Legs" type="Sprite2D" parent="Body"]
+texture = ExtResource("2_ulewr")
+
+[node name="Arms" type="Sprite2D" parent="Body"]
+texture = ExtResource("3_8o8dd")
+
+[node name="Shell" type="Sprite2D" parent="Body"]
+texture = ExtResource("4_app1l")
+
+[node name="Mouth" type="Sprite2D" parent="Body"]
+texture = ExtResource("5_lflsc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -64.25)
+shape = SubResource("RectangleShape2D_cnin2")
