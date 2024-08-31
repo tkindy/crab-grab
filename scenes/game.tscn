@@ -73,4 +73,13 @@ collision_mask = 2
 position = Vector2(1153, 319)
 shape = SubResource("WorldBoundaryShape2D_7tlsf")
 
+[node name="Score" type="Label" parent="."]
+z_index = 10
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 121.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 30
+text = "Score: 0"
+
 [connection signal="timeout" from="FishSpawnTimer" to="." method="_on_fish_spawn_timer_timeout"]

@@ -33,3 +33,4 @@ func _on_fish_spawn_timer_timeout() -> void:
 
 func _on_fish_entered(body: Node2D) -> void:
   score += 1
+  $Score.text = "Score: %d" % score
