@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkebddhv7kr0i"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_4nk7b"]
+[ext_resource type="Texture2D" uid="uid://bu27aq10kx64x" path="res://assets/Title.png" id="1_awqps"]
+[ext_resource type="PackedScene" uid="uid://ddbgnqlwq4d2h" path="res://scenes/background.tscn" id="2_g1hk1"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4nk7b")
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -223.5
+offset_top = 17.0
+offset_right = 241.5
+offset_bottom = 418.0
+grow_horizontal = 2
+rotation = 0.184299
+texture = ExtResource("1_awqps")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Background" parent="." instance=ExtResource("2_g1hk1")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0
+offset_bottom = 1152.0
+grow_vertical = 0
+
+[node name="StartGame" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -68.0
+offset_top = -121.0
+offset_right = 68.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Start"
+
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
