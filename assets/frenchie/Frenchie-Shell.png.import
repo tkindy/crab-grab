@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eyeiglski2cb"
-path="res://.godot/imported/Frenchie-4.png-8193f4038df31f5136822d0a4c4535ec.ctex"
+uid="uid://f6yo8wfnanmd"
+path="res://.godot/imported/Frenchie-Shell.png-628e1d26b5e3925262b987fadd111f35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/frenchie/Frenchie-4.png"
-dest_files=["res://.godot/imported/Frenchie-4.png-8193f4038df31f5136822d0a4c4535ec.ctex"]
+source_file="res://assets/frenchie/Frenchie-Shell.png"
+dest_files=["res://.godot/imported/Frenchie-Shell.png-628e1d26b5e3925262b987fadd111f35.ctex"]
 
 [params]
 

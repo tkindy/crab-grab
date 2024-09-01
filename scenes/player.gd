@@ -19,6 +19,8 @@ func _physics_process(delta: float) -> void:
   if Input.is_action_just_pressed("jump") and jumps != 0:
     jumps -= 1
     velocity.y += JUMP_VELOCITY
+    $AnimationPlayer.stop(true)
+    $AnimationPlayer.play("jump")
 
   # Get the input direction and handle the movement/deceleration.
   var direction := Input.get_axis("move_left", "move_right")
@@ -27,9 +29,10 @@ func _physics_process(delta: float) -> void:
   else:
     velocity.x = move_toward(velocity.x, 0, SPEED)
 
-  if velocity.x:
-    $AnimationPlayer.play("walk")
-  else:
-    $AnimationPlayer.play("RESET")
+  if $AnimationPlayer.current_animation != "jump":
+    if velocity.x:
+      $AnimationPlayer.play("walk")
+    else:
+      $AnimationPlayer.play("RESET")
 
   move_and_slide()

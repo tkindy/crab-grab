@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://d333dqdpbo1ps"]
+[gd_scene load_steps=14 format=3 uid="uid://d333dqdpbo1ps"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_17ggi"]
-[ext_resource type="Texture2D" uid="uid://d073src56lqem" path="res://assets/frenchie/Frenchie-1.png" id="1_pn84j"]
-[ext_resource type="Texture2D" uid="uid://bpv8ckwpsd1nm" path="res://assets/frenchie/Frenchie-2.png" id="2_ulewr"]
-[ext_resource type="Texture2D" uid="uid://bhvs2li7i042y" path="res://assets/frenchie/Frenchie-3.png" id="3_8o8dd"]
-[ext_resource type="Texture2D" uid="uid://eyeiglski2cb" path="res://assets/frenchie/Frenchie-4.png" id="4_app1l"]
-[ext_resource type="Texture2D" uid="uid://48n8nn4rfy37" path="res://assets/frenchie/Frenchie-5.png" id="5_lflsc"]
+[ext_resource type="Texture2D" uid="uid://8pxrfsbema3f" path="res://assets/frenchie/Frenchie-Eyes.png" id="2_itoxx"]
+[ext_resource type="Texture2D" uid="uid://c1yunvddtjsae" path="res://assets/frenchie/Frenchie-Leg-Left.png" id="3_j2oue"]
+[ext_resource type="Texture2D" uid="uid://b1rivx4p7ifwx" path="res://assets/frenchie/Frenchie-Leg-Right.png" id="4_nubdx"]
+[ext_resource type="Texture2D" uid="uid://ddb0emfx3ltve" path="res://assets/frenchie/Frenchie-Arm-Left.png" id="5_pcbc1"]
+[ext_resource type="Texture2D" uid="uid://bk4iuxyydjay0" path="res://assets/frenchie/Frenchie-Arm-Right.png" id="6_iu5qr"]
+[ext_resource type="Texture2D" uid="uid://f6yo8wfnanmd" path="res://assets/frenchie/Frenchie-Shell.png" id="7_t3nkt"]
+[ext_resource type="Texture2D" uid="uid://bmyckuc3mf38y" path="res://assets/frenchie/Frenchie-Mouth.png" id="8_gdljl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnin2"]
 size = Vector2(150, 128.5)
@@ -18,10 +20,22 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Legs:rotation")
+tracks/0/path = NodePath("Body/LegLeft:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.139626, 0.0, 0.139626]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/LegRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
@@ -33,7 +47,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Legs:rotation")
+tracks/0/path = NodePath("Body/LegLeft:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,10 +56,52 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/LegRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_m6brr"]
+resource_name = "jump"
+length = 0.5
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/LegLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.436332, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/LegRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.436332, 0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ixa8w"]
 _data = {
 "RESET": SubResource("Animation_f7ss8"),
+"jump": SubResource("Animation_m6brr"),
 "walk": SubResource("Animation_f7mhu")
 }
 
@@ -59,19 +115,27 @@ scale = Vector2(0.2, 0.2)
 metadata/_edit_group_ = true
 
 [node name="Eyes" type="Sprite2D" parent="Body"]
-texture = ExtResource("1_pn84j")
+texture = ExtResource("2_itoxx")
 
-[node name="Legs" type="Sprite2D" parent="Body"]
-texture = ExtResource("2_ulewr")
+[node name="LegLeft" type="Sprite2D" parent="Body"]
+scale = Vector2(1, 1)
+texture = ExtResource("3_j2oue")
 
-[node name="Arms" type="Sprite2D" parent="Body"]
-texture = ExtResource("3_8o8dd")
+[node name="LegRight" type="Sprite2D" parent="Body"]
+scale = Vector2(1, 1)
+texture = ExtResource("4_nubdx")
+
+[node name="ArmLeft" type="Sprite2D" parent="Body"]
+texture = ExtResource("5_pcbc1")
+
+[node name="ArmRight" type="Sprite2D" parent="Body"]
+texture = ExtResource("6_iu5qr")
 
 [node name="Shell" type="Sprite2D" parent="Body"]
-texture = ExtResource("4_app1l")
+texture = ExtResource("7_t3nkt")
 
 [node name="Mouth" type="Sprite2D" parent="Body"]
-texture = ExtResource("5_lflsc")
+texture = ExtResource("8_gdljl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

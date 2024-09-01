@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhvs2li7i042y"
-path="res://.godot/imported/Frenchie-3.png-e5f49e6111a81e69184eeeaa27827ecf.ctex"
+uid="uid://bk4iuxyydjay0"
+path="res://.godot/imported/Frenchie-Arm-Right.png-fc29b6b211df957e15afd62bb7619515.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/frenchie/Frenchie-3.png"
-dest_files=["res://.godot/imported/Frenchie-3.png-e5f49e6111a81e69184eeeaa27827ecf.ctex"]
+source_file="res://assets/frenchie/Frenchie-Arm-Right.png"
+dest_files=["res://.godot/imported/Frenchie-Arm-Right.png-fc29b6b211df957e15afd62bb7619515.ctex"]
 
 [params]
 
