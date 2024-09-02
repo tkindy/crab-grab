@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxsxex43yr3c8"]
+
+[ext_resource type="Script" path="res://scenes/game_over_overlay.gd" id="1_ssj2r"]
+
+[node name="GameOverOverlay" type="CanvasLayer"]
+script = ExtResource("1_ssj2r")
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -173.0
+offset_top = 151.0
+offset_right = 174.0
+offset_bottom = 239.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="ScoreDescription" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.0
+offset_top = 275.0
+offset_right = 141.0
+offset_bottom = 320.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "You caught 17 fish"
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -83.0
+offset_top = 401.0
+offset_right = 84.0
+offset_bottom = 454.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Play Again
+"
+
+[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]

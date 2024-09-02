@@ -1,20 +1,13 @@
 extends Node2D
 
+signal game_over
+signal restart_game
 
 const FISH = preload("res://scenes/fish.tscn")
 const PUFFER = preload("res://scenes/pufferfish.tscn")
 const PUFFER_RATIO = 0.2
 
 var score = 0
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-  pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-  pass
 
 
 func _on_fish_spawn_timer_timeout() -> void:
@@ -34,14 +27,41 @@ func _on_fish_spawn_timer_timeout() -> void:
 
   var body_entered_callback = _on_puffer_entered if is_puffer else _on_fish_entered
   new_fish.body_entered.connect(body_entered_callback)
+  game_over.connect(new_fish.game_over)
+  restart_game.connect(new_fish.restart_game)
 
   $Fish.add_child(new_fish)
 
 
 func _on_fish_entered(body: Node2D) -> void:
-  score += 1
-  $Score.text = "Score: %d" % score
+  _increment_score()
 
 
 func _on_puffer_entered(body: Node2D) -> void:
-  get_tree().change_scene_to_file.call_deferred("res://scenes/main_menu.tscn")
+  game_over.emit()
+
+  $FishSpawnTimer.stop()
+  $Player.set_game_over()
+
+  var overlay = load("res://scenes/game_over_overlay.tscn").instantiate()
+  overlay.set_score(score)
+  overlay.play_again.connect(_on_play_again)
+
+  add_child(overlay)
+
+
+func _on_play_again() -> void:
+  restart_game.emit()
+  _set_score(0)
+  get_node("GameOverOverlay").queue_free()
+  $FishSpawnTimer.start()
+  $Player.restart_game()
+
+
+func _increment_score() -> void:
+  _set_score(score + 1)
+
+
+func _set_score(new_score: int) -> void:
+  score = new_score
+  $Score.text = "Score: %d" % score

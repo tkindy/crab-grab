@@ -25,6 +25,14 @@ func _process(delta: float) -> void:
     position.x += x_change
 
 
+func game_over():
+  collision_mask = 0b0
+
+
+func restart_game():
+  collision_mask = 0b1
+
+
 func _on_body_entered(body: Node2D) -> void:
   queue_free()
 
