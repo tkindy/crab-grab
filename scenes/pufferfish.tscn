@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://ca4iojiachg05"]
+
+[ext_resource type="Texture2D" uid="uid://cix0p83usvdxu" path="res://assets/pufferfish/Pufferfish-TailFin.png" id="1_yqv05"]
+[ext_resource type="Texture2D" uid="uid://cpsm70jba4w2" path="res://assets/pufferfish/Pufferfish-Body.png" id="2_j2elq"]
+[ext_resource type="Texture2D" uid="uid://b3fdcngufmfmo" path="res://assets/pufferfish/Pufferfish-Eye.png" id="3_42qha"]
+[ext_resource type="Texture2D" uid="uid://0xnllfror5ei" path="res://assets/pufferfish/Pufferfish-Spikes.png" id="4_g1ma5"]
+[ext_resource type="Texture2D" uid="uid://cmtnumxv23yb4" path="res://assets/pufferfish/Pufferfish-Fin.png" id="5_tywu2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ieo08"]
+radius = 240.0
+height = 606.0
+
+[sub_resource type="Animation" id="Animation_hxb4f"]
+resource_name = "swim"
+length = 0.75
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fin:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.375),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.436332]
+}
+
+[sub_resource type="Animation" id="Animation_eek77"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fin:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pps8"]
+_data = {
+"RESET": SubResource("Animation_eek77"),
+"swim": SubResource("Animation_hxb4f")
+}
+
+[node name="Pufferfish" type="Area2D"]
+
+[node name="TailFin" type="Sprite2D" parent="."]
+texture = ExtResource("1_yqv05")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("2_j2elq")
+
+[node name="Eye" type="Sprite2D" parent="."]
+texture = ExtResource("3_42qha")
+
+[node name="Spikes" type="Sprite2D" parent="."]
+texture = ExtResource("4_g1ma5")
+
+[node name="Fin" type="Sprite2D" parent="."]
+texture = ExtResource("5_tywu2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.57204
+shape = SubResource("CapsuleShape2D_ieo08")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1pps8")
+}
+autoplay = "swim"

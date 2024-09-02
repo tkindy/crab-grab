@@ -2,6 +2,8 @@ extends Node2D
 
 
 const FISH = preload("res://scenes/fish_2.tscn")
+const PUFFER = preload("res://scenes/pufferfish.tscn")
+const PUFFER_RATIO = 0.1
 
 var score = 0
 
@@ -16,7 +18,8 @@ func _process(delta: float) -> void:
 
 
 func _on_fish_spawn_timer_timeout() -> void:
-  var new_fish = FISH.instantiate()
+  var scene = PUFFER if randf() < PUFFER_RATIO else FISH
+  var new_fish = scene.instantiate()
 
   var spawn_side_index = randi() % 2
   new_fish.moving_left = spawn_side_index == 1
