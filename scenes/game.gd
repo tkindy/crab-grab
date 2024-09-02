@@ -18,7 +18,9 @@ func _process(delta: float) -> void:
 
 
 func _on_fish_spawn_timer_timeout() -> void:
-  var scene = PUFFER if randf() < PUFFER_RATIO else FISH
+  var is_puffer = randf() < PUFFER_RATIO
+
+  var scene = PUFFER if is_puffer else FISH
   var new_fish = scene.instantiate()
 
   var spawn_side_index = randi() % 2
@@ -30,10 +32,16 @@ func _on_fish_spawn_timer_timeout() -> void:
 
   new_fish.position = spawn_location.position
 
-  new_fish.body_entered.connect(_on_fish_entered)
+  var body_entered_callback = _on_puffer_entered if is_puffer else _on_fish_entered
+  new_fish.body_entered.connect(body_entered_callback)
 
   $Fish.add_child(new_fish)
+
 
 func _on_fish_entered(body: Node2D) -> void:
   score += 1
   $Score.text = "Score: %d" % score
+
+
+func _on_puffer_entered(body: Node2D) -> void:
+  get_tree().change_scene_to_file.call_deferred("res://scenes/main_menu.tscn")
