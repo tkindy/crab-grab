@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgiurci8latx4"]
+[gd_scene load_steps=10 format=3 uid="uid://cgiurci8latx4"]
 
 [ext_resource type="PackedScene" uid="uid://d333dqdpbo1ps" path="res://scenes/player.tscn" id="1_8ernn"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_wivhb"]
 [ext_resource type="PackedScene" uid="uid://ddbgnqlwq4d2h" path="res://scenes/background.tscn" id="3_cfrm7"]
+[ext_resource type="PackedScene" uid="uid://bwqn74eg11i3t" path="res://scenes/grass.tscn" id="3_x1rla"]
 
 [sub_resource type="Curve2D" id="Curve2D_qps6h"]
 _data = {
@@ -73,6 +74,32 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
 position = Vector2(1153, 319)
 shape = SubResource("WorldBoundaryShape2D_7tlsf")
+
+[node name="Scatter" type="Node2D" parent="."]
+
+[node name="Grass1" parent="Scatter" instance=ExtResource("3_x1rla")]
+position = Vector2(74, 599)
+
+[node name="Grass2" parent="Scatter" instance=ExtResource("3_x1rla")]
+position = Vector2(239, 596)
+
+[node name="Grass3" parent="Scatter" instance=ExtResource("3_x1rla")]
+position = Vector2(289, 605)
+
+[node name="Grass4" parent="Scatter" instance=ExtResource("3_x1rla")]
+position = Vector2(448, 606)
+
+[node name="Grass5" parent="Scatter" instance=ExtResource("3_x1rla")]
+position = Vector2(858, 608)
+
+[node name="Grass6" parent="Scatter" instance=ExtResource("3_x1rla")]
+position = Vector2(910, 603)
+
+[node name="Grass7" parent="Scatter" instance=ExtResource("3_x1rla")]
+position = Vector2(1039, 604)
+
+[node name="Grass8" parent="Scatter" instance=ExtResource("3_x1rla")]
+position = Vector2(739, 599)
 
 [node name="Score" type="Label" parent="."]
 z_index = 10
