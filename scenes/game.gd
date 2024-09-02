@@ -2,8 +2,8 @@ extends Node2D
 
 
 const FISH = preload("res://scenes/fish_2.tscn")
-const PUFFER = preload("res://scenes/pufferfish.tscn")
-const PUFFER_RATIO = 0.1
+const PUFFER = preload("res://scenes/pufferfish_2.tscn")
+const PUFFER_RATIO = 0.2
 
 var score = 0
 

@@ -1,4 +1,4 @@
-extends "res://abstract_fish.gd"
+extends "res://scenes/abstract_fish.gd"
 
 
 func get_width():
