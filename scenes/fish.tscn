@@ -1,25 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvayfsdvqsp3k"]
+[gd_scene load_steps=5 format=3 uid="uid://c48ye2joq67yr"]
 
 [ext_resource type="Script" path="res://scenes/fish.gd" id="1_4ha28"]
 [ext_resource type="Texture2D" uid="uid://degdf3hjmf48p" path="res://assets/Fish.png" id="1_lb04d"]
+[ext_resource type="PackedScene" uid="uid://8lidfeg1yhmh" path="res://scenes/abstract_fish.tscn" id="1_sj6fb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_omjuy"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1joj"]
 size = Vector2(154, 95)
 
-[node name="Fish" type="Area2D"]
-collision_mask = 2
+[node name="Fish" instance=ExtResource("1_sj6fb")]
 script = ExtResource("1_4ha28")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_lb04d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_omjuy")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(-77, -48, 154, 95)
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+shape = SubResource("RectangleShape2D_g1joj")
