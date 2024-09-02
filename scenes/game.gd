@@ -54,6 +54,10 @@ func _on_play_again() -> void:
   restart_game.emit()
   _set_score(0)
   get_node("GameOverOverlay").queue_free()
+
+  for fish in $Fish.get_children():
+    fish.queue_free()
+
   $FishSpawnTimer.start()
   $Player.restart_game()
 
