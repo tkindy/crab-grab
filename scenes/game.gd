@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const FISH = preload("res://scenes/fish.tscn")
+const FISH = preload("res://scenes/fish_2.tscn")
 
 var score = 0
 
