@@ -32,6 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
   queue_free()
 
+
 func get_width() -> int:
   assert(false, "Not implemented")
   return 0
