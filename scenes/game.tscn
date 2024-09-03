@@ -122,6 +122,7 @@ text = "Score: 0"
 
 [node name="Music" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("4_4whef")
+volume_db = -5.0
 autoplay = true
 parameters/looping = true
 
