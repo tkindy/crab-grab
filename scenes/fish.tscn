@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c48ye2joq67yr"]
+[gd_scene load_steps=8 format=3 uid="uid://c48ye2joq67yr"]
 
 [ext_resource type="Script" path="res://scenes/fish.gd" id="1_4ha28"]
 [ext_resource type="Texture2D" uid="uid://degdf3hjmf48p" path="res://assets/Fish.png" id="1_lb04d"]
@@ -6,6 +6,44 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1joj"]
 size = Vector2(154, 95)
+
+[sub_resource type="Animation" id="Animation_kwlxo"]
+resource_name = "catch"
+length = 0.25
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_1s3h2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l71x7"]
+_data = {
+"RESET": SubResource("Animation_1s3h2"),
+"catch": SubResource("Animation_kwlxo")
+}
 
 [node name="Fish" instance=ExtResource("1_sj6fb")]
 script = ExtResource("1_4ha28")
@@ -15,5 +53,11 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_lb04d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_g1joj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_l71x7")
+}
