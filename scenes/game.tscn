@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgiurci8latx4"]
+[gd_scene load_steps=12 format=3 uid="uid://cgiurci8latx4"]
 
 [ext_resource type="PackedScene" uid="uid://d333dqdpbo1ps" path="res://scenes/player.tscn" id="1_8ernn"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_wivhb"]
 [ext_resource type="PackedScene" uid="uid://ddbgnqlwq4d2h" path="res://scenes/background.tscn" id="3_cfrm7"]
 [ext_resource type="PackedScene" uid="uid://bwqn74eg11i3t" path="res://scenes/grass.tscn" id="3_x1rla"]
 [ext_resource type="AudioStream" uid="uid://krquk04mepgs" path="res://assets/Gameplay Music.mp3" id="4_4whef"]
+[ext_resource type="AudioStream" uid="uid://brd6vv5tt7qal" path="res://assets/Lose Sound.mp3" id="6_ppjbi"]
 
 [sub_resource type="Curve2D" id="Curve2D_qps6h"]
 _data = {
@@ -116,9 +117,12 @@ text = "Score: 0"
 
 [node name="Background" parent="." instance=ExtResource("3_cfrm7")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_4whef")
 autoplay = true
 parameters/looping = true
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ppjbi")
 
 [connection signal="timeout" from="FishSpawnTimer" to="." method="_on_fish_spawn_timer_timeout"]

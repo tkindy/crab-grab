@@ -55,6 +55,9 @@ func _on_puffer_entered(body: Node2D) -> void:
 
   add_child(overlay)
 
+  $Music.stop()
+  $LoseSound.play()
+
 
 func _on_play_again() -> void:
   restart_game.emit()
@@ -66,6 +69,8 @@ func _on_play_again() -> void:
 
   $FishSpawnTimer.start()
   $Player.restart_game()
+
+  $Music.play()
 
 
 func _increment_score() -> void:
