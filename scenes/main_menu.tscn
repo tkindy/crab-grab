@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dkebddhv7kr0i"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_4nk7b"]
-[ext_resource type="Texture2D" uid="uid://bu27aq10kx64x" path="res://assets/Title.png" id="1_awqps"]
 [ext_resource type="PackedScene" uid="uid://ddbgnqlwq4d2h" path="res://scenes/background.tscn" id="2_g1hk1"]
+[ext_resource type="Texture2D" uid="uid://b6o45av1pogvi" path="res://assets/Title.png" id="2_rqjnu"]
 [ext_resource type="AudioStream" uid="uid://bw5dei85sk870" path="res://assets/Theme.mp3" id="4_ltw33"]
 
 [node name="MainMenu" type="Control"]
@@ -25,7 +25,7 @@ offset_right = 241.5
 offset_bottom = 418.0
 grow_horizontal = 2
 rotation = 0.184299
-texture = ExtResource("1_awqps")
+texture = ExtResource("2_rqjnu")
 expand_mode = 1
 stretch_mode = 4
 
