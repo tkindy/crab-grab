@@ -34,6 +34,7 @@ func _on_fish_spawn_timer_timeout() -> void:
 
 
 func _on_fish_entered(body: Node2D) -> void:
+  $Sounds/CatchSound.play()
   _increment_score()
 
 
@@ -55,8 +56,8 @@ func _on_puffer_entered(body: Node2D) -> void:
 
   add_child(overlay)
 
-  $Music.stop()
-  $LoseSound.play()
+  $Sounds/Music.stop()
+  $Sounds/LoseSound.play()
 
 
 func _on_play_again() -> void:
@@ -70,7 +71,7 @@ func _on_play_again() -> void:
   $FishSpawnTimer.start()
   $Player.restart_game()
 
-  $Music.play()
+  $Sounds/Music.play()
 
 
 func _increment_score() -> void:
