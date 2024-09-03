@@ -47,6 +47,12 @@ func _on_puffer_entered(body: Node2D) -> void:
   overlay.set_score(score)
   overlay.play_again.connect(_on_play_again)
 
+  var leaderboard = Leaderboard.open()
+  leaderboard.add(LeaderboardEntry.new(score))
+  leaderboard.write()
+
+  overlay.set_leaderboard(leaderboard)
+
   add_child(overlay)
 
 

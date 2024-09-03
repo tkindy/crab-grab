@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnyx6hwvvi3qy"]
+
+[ext_resource type="Script" path="res://scenes/leaderboard.gd" id="1_xtg8l"]
+
+[node name="Leaderboard" type="Label"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 32
+text = "1. 35
+2. 23
+3. 7"
+horizontal_alignment = 1
+script = ExtResource("1_xtg8l")
