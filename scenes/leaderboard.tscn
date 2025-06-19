@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cnyx6hwvvi3qy"]
 
-[ext_resource type="Script" path="res://scenes/leaderboard.gd" id="1_xtg8l"]
+[ext_resource type="Script" uid="uid://brw1bvormwbj1" path="res://scenes/leaderboard.gd" id="1_xtg8l"]
 
 [node name="Leaderboard" type="Label"]
 offset_right = 40.0

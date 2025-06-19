@@ -1,11 +1,26 @@
 [gd_scene load_steps=8 format=3 uid="uid://c48ye2joq67yr"]
 
-[ext_resource type="Script" path="res://scenes/fish.gd" id="1_4ha28"]
+[ext_resource type="Script" uid="uid://duk3kuc6vlgbw" path="res://scenes/fish.gd" id="1_4ha28"]
 [ext_resource type="Texture2D" uid="uid://degdf3hjmf48p" path="res://assets/Fish.png" id="1_lb04d"]
 [ext_resource type="PackedScene" uid="uid://8lidfeg1yhmh" path="res://scenes/abstract_fish.tscn" id="1_sj6fb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1joj"]
 size = Vector2(154, 95)
+
+[sub_resource type="Animation" id="Animation_1s3h2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.2)]
+}
 
 [sub_resource type="Animation" id="Animation_kwlxo"]
 resource_name = "catch"
@@ -24,25 +39,10 @@ tracks/0/keys = {
 "values": [Vector2(0.2, 0.2), Vector2(1e-05, 1e-05)]
 }
 
-[sub_resource type="Animation" id="Animation_1s3h2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.2, 0.2)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l71x7"]
 _data = {
-"RESET": SubResource("Animation_1s3h2"),
-"catch": SubResource("Animation_kwlxo")
+&"RESET": SubResource("Animation_1s3h2"),
+&"catch": SubResource("Animation_kwlxo")
 }
 
 [node name="Fish" instance=ExtResource("1_sj6fb")]
@@ -59,5 +59,5 @@ shape = SubResource("RectangleShape2D_g1joj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
-"": SubResource("AnimationLibrary_l71x7")
+&"": SubResource("AnimationLibrary_l71x7")
 }

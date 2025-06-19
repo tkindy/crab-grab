@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://8lidfeg1yhmh" path="res://scenes/abstract_fish.tscn" id="1_c5dgv"]
 [ext_resource type="Texture2D" uid="uid://cix0p83usvdxu" path="res://assets/pufferfish/Pufferfish-TailFin.png" id="1_yqv05"]
-[ext_resource type="Script" path="res://scenes/pufferfish.gd" id="2_itfd8"]
+[ext_resource type="Script" uid="uid://08sc2xbvgwu4" path="res://scenes/pufferfish.gd" id="2_itfd8"]
 [ext_resource type="Texture2D" uid="uid://cpsm70jba4w2" path="res://assets/pufferfish/Pufferfish-Body.png" id="2_j2elq"]
 [ext_resource type="Texture2D" uid="uid://b3fdcngufmfmo" path="res://assets/pufferfish/Pufferfish-Eye.png" id="3_42qha"]
 [ext_resource type="Texture2D" uid="uid://0xnllfror5ei" path="res://assets/pufferfish/Pufferfish-Spikes.png" id="4_g1ma5"]
@@ -47,8 +47,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1pps8"]
 _data = {
-"RESET": SubResource("Animation_eek77"),
-"swim": SubResource("Animation_hxb4f")
+&"RESET": SubResource("Animation_eek77"),
+&"swim": SubResource("Animation_hxb4f")
 }
 
 [node name="Pufferfish" instance=ExtResource("1_c5dgv")]
@@ -81,6 +81,6 @@ shape = SubResource("CapsuleShape2D_2fvy4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 libraries = {
-"": SubResource("AnimationLibrary_1pps8")
+&"": SubResource("AnimationLibrary_1pps8")
 }
 autoplay = "swim"

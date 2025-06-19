@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cgiurci8latx4"]
 
 [ext_resource type="PackedScene" uid="uid://d333dqdpbo1ps" path="res://scenes/player.tscn" id="1_8ernn"]
-[ext_resource type="Script" path="res://scenes/game.gd" id="1_wivhb"]
+[ext_resource type="Script" uid="uid://dki2urvp6ddcx" path="res://scenes/game.gd" id="1_wivhb"]
 [ext_resource type="PackedScene" uid="uid://ddbgnqlwq4d2h" path="res://scenes/background.tscn" id="3_cfrm7"]
 [ext_resource type="PackedScene" uid="uid://bwqn74eg11i3t" path="res://scenes/grass.tscn" id="3_x1rla"]
 [ext_resource type="AudioStream" uid="uid://krquk04mepgs" path="res://assets/Gameplay Music.mp3" id="4_4whef"]
